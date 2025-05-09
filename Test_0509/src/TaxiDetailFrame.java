@@ -29,7 +29,9 @@ class TaxiDetailFrame extends JFrame {
         String[] cols = {"暱稱", "電話", "Email"};
         participantModel = new DefaultTableModel(cols, 0);
         participantTable = new JTable(participantModel);
-        add(new JScrollPane(participantTable), BorderLayout.NORTH);
+        JScrollPane topScroll = new JScrollPane(participantTable);
+        topScroll.setPreferredSize(new Dimension(400, 120));
+        add(topScroll, BorderLayout.NORTH);
 
         // 中間：留言板
         JPanel messagePanel = new JPanel(new BorderLayout(5,5));
@@ -37,7 +39,9 @@ class TaxiDetailFrame extends JFrame {
 
         commentModel = new DefaultListModel<>();
         commentList = new JList<>(commentModel);
-        messagePanel.add(new JScrollPane(commentList), BorderLayout.CENTER);
+        JScrollPane commentScroll = new JScrollPane(commentList);
+        commentScroll.setPreferredSize(new Dimension(400, 150));
+        messagePanel.add(commentScroll, BorderLayout.CENTER);
 
         JPanel inputPanel = new JPanel(new BorderLayout(5,5));
         commentField = new JTextField();
@@ -48,7 +52,7 @@ class TaxiDetailFrame extends JFrame {
 
         add(messagePanel, BorderLayout.CENTER);
 
-        // 下方：確認按鈕（可用於加入參與者或其他操作）
+        // 下方：確認按鈕
         JPanel bottomPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
         confirmButton = new JButton("確認");
         bottomPanel.add(confirmButton);
@@ -84,4 +88,3 @@ class TaxiDetailFrame extends JFrame {
         return new Person(name, "0900000000", name.toLowerCase() + "@example.com");
     }
 }
-
