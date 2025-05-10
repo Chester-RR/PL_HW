@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-=======
-import java.util.ArrayList;
->>>>>>> 6151e6f5479fd1c1941c1ad5257c98590a4fa206
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -58,7 +54,7 @@ public class LoginForm extends JFrame {
                 String dbPassword = "D4NrtF";
 
                 try (Connection conn = DriverManager.getConnection(url, dbUsername, dbPassword)) {
-                    String sql = "SELECT * FROM New_taxi_users WHERE Email = ? AND PhoneNumber = ? AND Password = ?";
+                    String sql = "SELECT * FROM user_info WHERE Email = ? AND PhoneNumber = ? AND Password = ?";
                     try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
                         pstmt.setString(1, email);
                         pstmt.setString(2, phone);

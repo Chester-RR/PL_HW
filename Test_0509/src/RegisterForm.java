@@ -19,7 +19,7 @@ public class RegisterForm extends JFrame {
         String dbPassword = "D4NrtF";
 
         try (Connection conn = DriverManager.getConnection(url, dbUsername, dbPassword)) {
-            String sql = "SELECT * FROM New_taxi_users WHERE Email = ? OR PhoneNumber = ?";
+            String sql = "SELECT * FROM user_info WHERE Email = ? OR PhoneNumber = ?";
             try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
                 pstmt.setString(1, email);
                 pstmt.setString(2, phone);
@@ -84,7 +84,7 @@ public class RegisterForm extends JFrame {
                 }
 
                 try (Connection conn = DriverManager.getConnection(url, dbUsername, dbPassword)) {
-                    String insertSql = "INSERT INTO New_taxi_users (Name, Email, PhoneNumber, Password) VALUES (?, ?, ?, ?)";
+                    String insertSql = "INSERT INTO user_info (Name, Email, PhoneNumber, Password) VALUES (?, ?, ?, ?)";
                     try (PreparedStatement pstmt = conn.prepareStatement(insertSql)) {
                         pstmt.setString(1, name);
                         pstmt.setString(2, email);

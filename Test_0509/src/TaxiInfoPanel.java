@@ -5,7 +5,9 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.*;
 
-// 顯示計程車資訊列表面板
+/**
+ * 面板：顯示計程車行程簡要資訊列表
+ */
 public class TaxiInfoPanel extends JPanel {
     private JTable table;
     private DefaultTableModel model;
@@ -13,7 +15,7 @@ public class TaxiInfoPanel extends JPanel {
     public TaxiInfoPanel() {
         setLayout(new BorderLayout());
 
-        // 定義欄位與示例資料
+        // 欄位定義與範例資料
         String[] columns = {"發起人", "預計出發時間", "預估價格", "目前人數"};
         Object[][] data = {
             {"A", "08:00", 200, 2},
@@ -27,7 +29,7 @@ public class TaxiInfoPanel extends JPanel {
         table = new JTable(model);
         table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
-        // 點擊列後，開啟詳細視窗
+        // 選取一列後打開詳細視窗
         table.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent e) {
